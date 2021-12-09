@@ -8,7 +8,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -16,7 +15,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TableLayout tl_result;
+    private TableLayout tl_result, tl_overallResult;
+    private TableRow tableRow, tr_overallResult;
+    private TextView tv_overallResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +25,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         tl_result = findViewById(R.id.tl_result);
-        displayResultView(this, tl_result);
+        tl_overallResult = findViewById(R.id.tl_overallResult);
+        tableRow = findViewById(R.id.tableRow);
+        tv_overallResult = findViewById(R.id.tv_overallResult);
+
+        displayResultView(this, tl_result, tableRow, tl_overallResult, tv_overallResult);
     }
 
-    public static void displayResultView(Context context, TableLayout tableLayout) {
+    public static void displayResultView(Context context, TableLayout tableLayout, TableRow tableRow, TableLayout tl_overallResult, TextView tv_overallResult) {
 
         try {
 
             if (tableLayout != null) {
-
-                TableRow tableRow = new TableRow(context);
-                tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
                 TableLayout tl_part1 = new TableLayout(context);
 
@@ -49,22 +51,16 @@ public class MainActivity extends AppCompatActivity {
                     tl_part1.addView(drawTableRow(context, String.valueOf(i + 1), name, grade, false));
                 }
 
-                tableRow.addView(tl_part1);
-
-                TableLayout tl_overallResult = new TableLayout(context);
+                tableRow.addView(tl_part1, 0);
 
                 TableRow tr_overallResult = new TableRow(context);
-                TextView tv_overallResult = createTextView(context, "Overall Result(Pass/Fail)", true, 16f, Gravity.CENTER);
-                tv_overallResult.setTypeface(null, Typeface.BOLD);
-                tr_overallResult.addView(tv_overallResult);
+                TextView tv_overallResultHeader = createTextView(context, "Overall Result(Pass/Fail)", true, 16f, Gravity.CENTER);
+                tv_overallResultHeader.setTypeface(null, Typeface.BOLD);
+                tr_overallResult.addView(tv_overallResultHeader);
 
-                tl_overallResult.addView(tr_overallResult);
+                tl_overallResult.addView(tr_overallResult, 0);
 
-                TextView tv_overallResult1 = createTextView(context, overallResult, false, 16f, Gravity.CENTER);
-
-                tl_overallResult.addView(tv_overallResult1);
-
-                tableRow.addView(tl_overallResult);
+                tv_overallResult.setText(overallResult);
 
                 tableLayout.addView(tableRow);
 
@@ -83,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             textView.setBackground(ContextCompat.getDrawable(context, R.drawable.border_layout));
         }
 
+        textView.setText(label);
         textView.setTextSize(textSize);
         textView.setGravity(gravity);
         textView.setPadding(32, 32, 32, 32);

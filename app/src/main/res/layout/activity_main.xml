@@ -22,176 +22,20 @@
             <!--Row one -->
 
             <TableRow
+                android:id="@+id/tableRow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
 
-                <!--Part 1-->
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_layout">
-
-                    <!--Row one -->
-
-                    <TableRow
-                        android:id="@+id/tr_result"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/tv1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-                        <TextView
-                            android:id="@+id/tv2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-                        <TextView
-                            android:id="@+id/tv3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-
-                    </TableRow>
-
-
-                    <!--Row Two-->
-
-                    <TableRow
-                        android:id="@+id/tr_result1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/tv_srNo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-                        <TextView
-                            android:id="@+id/tv_name"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-                        <TextView
-                            android:id="@+id/tv_grade"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-
-                    </TableRow>
-
-
-                    <!--Row Three-->
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-
-                    </TableRow>
-
-                    <!--Row Three-->
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-
-                    </TableRow>
-
-                </TableLayout>
-
-
                 <!--Part 2-->
                 <TableLayout
-
+                    android:id="@+id/tl_overallResult"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-
-                    <!--Row one -->
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@drawable/border_layout"
-                            android:text="tv1" />
-
-
-                    </TableRow>
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_layout">
 
                     <TextView
-                        android:id="@+id/tv"
+                        android:id="@+id/tv_overallResult"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:background="@drawable/border_layout"
