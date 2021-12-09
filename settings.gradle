@@ -1,0 +1,2 @@
+rootProject.name = "GenerateTableDemo"
+include ':app'
