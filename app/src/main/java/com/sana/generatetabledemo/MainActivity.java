@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -21,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tl_result = findViewById(R.id.tl_result);
 
+        tl_result = findViewById(R.id.tl_result);
         displayResultView(this, tl_result);
     }
 
@@ -31,34 +32,42 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             if (tableLayout != null) {
-                tableLayout.addView(drawTableRow(context,
+
+                TableRow tableRow = new TableRow(context);
+                tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+
+                TableLayout tl_part1 = new TableLayout(context);
+
+                tl_part1.addView(drawTableRow(context,
                         "Sr. No",
                         "Student Name",
-                        "Grade",
-                        "Overall Result(Pass/Fail)", true));
+                        "Grade", true));
 
                 String overallResult = "Pass";
                 for (int i = 0; i < 3; i++) {
                     String name = "Sana Shaikh", grade = "A";
-                    tableLayout.addView(drawTableRow(context, String.valueOf(i + 1), name, grade, "", false));
+                    tl_part1.addView(drawTableRow(context, String.valueOf(i + 1), name, grade, false));
                 }
 
-                if (tableLayout.getChildCount() > 0) {
+                tableRow.addView(tl_part1);
 
-                    int t = tableLayout.getChildCount();
+                TableLayout tl_overallResult = new TableLayout(context);
 
-                    if (t / 2 == 0) {
-                        t = (t / 2) + 1;
-                    } else {
-                        t = (t / 2);
-                    }
+                TableRow tr_overallResult = new TableRow(context);
+                TextView tv_overallResult = createTextView(context, "Overall Result(Pass/Fail)", true, 16f, Gravity.CENTER);
+                tv_overallResult.setTypeface(null, Typeface.BOLD);
+                tr_overallResult.addView(tv_overallResult);
 
-                    TableRow tab = (TableRow) tableLayout.getChildAt(t);
+                tl_overallResult.addView(tr_overallResult);
 
-                    TextView textView1 = (TextView) tab.getVirtualChildAt(3);
+                TextView tv_overallResult1 = createTextView(context, overallResult, false, 16f, Gravity.CENTER);
 
-                    textView1.setText(overallResult);
-                }
+                tl_overallResult.addView(tv_overallResult1);
+
+                tableRow.addView(tl_overallResult);
+
+                tableLayout.addView(tableRow);
+
             }
 
         } catch (Exception e) {
@@ -81,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public static TableRow drawTableRow(Context context, String srNo, String name, String grade, String overallResult, boolean isFirstRow) {
+    public static TableRow drawTableRow(Context context, String srNo, String name, String grade, boolean isFirstRow) {
 
         TableRow tableRow = new TableRow(context);
         tableRow.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -89,24 +98,17 @@ public class MainActivity extends AppCompatActivity {
         TextView tv_srNo = createTextView(context, srNo, true, 16f, Gravity.CENTER);
         TextView tv_name = createTextView(context, name, true, 16f, Gravity.CENTER);
         TextView tv_grade = createTextView(context, grade, true, 16f, Gravity.CENTER);
-        TextView tv_overallResult = null;
 
         if (isFirstRow) {
 
             tv_srNo.setTypeface(null, Typeface.BOLD);
             tv_name.setTypeface(null, Typeface.BOLD);
             tv_grade.setTypeface(null, Typeface.BOLD);
-            tv_overallResult = createTextView(context, overallResult, true, 16f, Gravity.CENTER);
-            tv_overallResult.setTypeface(null, Typeface.BOLD);
-
-        } else {
-            tv_overallResult = createTextView(context, overallResult, false, 16f, Gravity.CENTER);
         }
 
         tableRow.addView(tv_srNo);
         tableRow.addView(tv_name);
         tableRow.addView(tv_grade);
-        tableRow.addView(tv_overallResult);
 
         return tableRow;
     }
