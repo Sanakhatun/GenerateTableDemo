@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 tableRow.addView(tl_part1, 0);
 
                 TableRow tr_overallResult = new TableRow(context);
-                TextView tv_overallResultHeader = createTextView(context, "Overall Result(Pass/Fail)", true, 16f, Gravity.CENTER);
+                TextView tv_overallResultHeader = createTextView(context, "Overall Result(Pass/Fail)", R.drawable.border_layout, 16f, Gravity.CENTER);
                 tv_overallResultHeader.setTypeface(null, Typeface.BOLD);
                 tr_overallResult.addView(tv_overallResultHeader);
 
@@ -71,14 +71,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private static TextView createTextView(Context context, String label, boolean drawable, Float textSize, int gravity) {
+    private static TextView createTextView(Context context, String label, int drawable, Float textSize, int gravity) {
 
         TextView textView = new TextView(context);
         textView.setText(label);
-        if (drawable) {
-            textView.setBackground(ContextCompat.getDrawable(context, R.drawable.border_layout));
-        }
-
+        textView.setBackground(ContextCompat.getDrawable(context, drawable));
         textView.setText(label);
         textView.setTextSize(textSize);
         textView.setGravity(gravity);
@@ -92,9 +89,9 @@ public class MainActivity extends AppCompatActivity {
         TableRow tableRow = new TableRow(context);
         tableRow.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        TextView tv_srNo = createTextView(context, srNo, true, 16f, Gravity.CENTER);
-        TextView tv_name = createTextView(context, name, true, 16f, Gravity.CENTER);
-        TextView tv_grade = createTextView(context, grade, true, 16f, Gravity.CENTER);
+        TextView tv_srNo = createTextView(context, srNo, R.drawable.border_layout, 16f, Gravity.CENTER);
+        TextView tv_name = createTextView(context, name, R.drawable.border_layout, 16f, Gravity.CENTER);
+        TextView tv_grade = createTextView(context, grade, R.drawable.border_layout, 16f, Gravity.CENTER);
 
         if (isFirstRow) {
 
